@@ -24,3 +24,7 @@ Thumbs.db
 ##############
 /test/
 /migrations/
+/instance/
+config.py
+i.html
+__pycache__

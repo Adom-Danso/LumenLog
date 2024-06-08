@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign Up &middot; LumenLog</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/signup.css')}}" />
+  </head>
+  <body class="align">
+    <div class="iphone">
+      <header class="header">
+        <h1>Sign Up</h1>
+      </header>
+
+      <main class="main">
+        <form class="form" method="POST" novalidate>
+          <div class="form__field">
+            <label class="form__label" for="email">Email</label>
+            {{form.email(id="email", class="form__input",
+            placeholder="tim@apple.com")}} {% if form.email.errors %} {% for
+            error in form.email.errors %}
+            <div>
+              <span>{{ error }}</span>
+            </div>
+            {% endfor %} {% endif %}
+          </div>
+
+          <div class="form__field">
+            <label class="form__label" for="username">Username</label>
+            {{form.email(id="email", class="form__input",
+            placeholder="Tim")}} {% if form.username.errors %} {% for
+            error in form.username.errors %}
+            <div>
+              <span>{{ error }}</span>
+            </div>
+            {% endfor %} {% endif %}
+          </div>
+
+          <div class="form__field">
+            <label class="form__label" for="password">Password</label>
+            {{ form.password(id="password", class="form__input",
+            placeholder="Enter your password" )}} {% if form.password.errors %}
+            {% for error in form.password.errors %}
+            <div>
+              <span>{{ error }}</span>
+            </div>
+            {% endfor %} {% endif %}
+          </div>
+
+          <div class="form__field">
+            <label class="form__label" for="password2">Confirm Password</label>
+            {{ form.password2(id="password2", class="form__input",
+            placeholder="Confirm your password" )}} {% if form.password2.errors %}
+            {% for error in form.password2.errors %}
+            <div>
+              <span>{{ error }}</span>
+            </div>
+            {% endfor %} {% endif %}
+          </div>
+
+          <div class="form__field">
+            {{ form.submit(class="button button--full button--primary" )}}
+          </div>
+          
+        </form>
+
+        <div class="text--center">
+          <p>
+            Already have an account? <a href="{{url_for('auth.login')}}">Login</a>
+          </p>
+        </div>
+      </main>
+    </div>
+  </body>
+</html>
