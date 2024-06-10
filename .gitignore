@@ -23,7 +23,8 @@ Thumbs.db
 
 ##############
 /test/
-/migrations/
+manage.py
+migrate.py
 /instance/
 config.py
 i.html

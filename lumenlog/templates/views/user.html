@@ -1,0 +1,49 @@
+{% extends "views/base.html" %} {% block title %}Profile{% endblock title %} {%
+block content %}
+<div class="row gx-5 justify-content-center px-4 bg-body-secondary">
+  <div
+    class="d-grid col-3 bg-dark-subtle border border-secondary rounded-4 profile">
+    <div class="my-3 text--center">
+      <div class="mb-2">
+        <img src="{{ user.avatar(130)}}" class="img-thumbnail" />
+      </div>
+      <h4 class="border-bottom pb-3">
+        <i class="fa-solid fa-user"></i> {{ user.username }}
+      </h4>
+      <figure>
+        <blockquote class="blockquote">
+          <p class="lh-sm lead small">{{user.about_me}}</p>
+        </blockquote>
+        <figcaption class="blockquote-footer">About me</figcaption>
+      </figure>
+      {% if user.username == current_user.username %}
+      <a
+        href="{{url_for('views.edit_profile', username=current_user.username)}}"
+        class="link-offset-2 link-underline link-underline-opacity-0"
+        ><div class="d-grid">
+          <button class="btn btn-secondary" type="button">Edit Profile</button>
+        </div></a
+      >
+      {% endif %}
+    </div>
+  </div>
+
+  <div class="col-9">
+    <!-- {% if user.username == current_user.username %}
+    <ul
+      class="list-group list-group-flush border border border-secondary rounded-4">
+      {% if posts %} {% for post in posts %}
+      <li class="list-group-item list-group-item-dark">
+        <a href="{{ url_for('views.user', username=post.author.username) }}"
+          >{{ post.author.username }}</a
+        >
+        says: {{ post.content }}
+      </li>
+      {% endfor %}{% endif %}
+    </ul>
+    {% endif %}-->
+    {% include "views/_posts.html" %}
+  </div>
+</div>
+{% endblock content %}
+

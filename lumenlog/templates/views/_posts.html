@@ -1,0 +1,11 @@
+<ul class="list-group list-group-flush border border border-secondary rounded-4">
+  {% if posts %} {% for post in posts %}
+  <li
+    class="list-group-item list-group-item-dark ">
+    <a href="{{ url_for('views.user', username=post.author.username) }}"
+      >{{ post.author.username }}</a
+    >
+    says: {{ post.content }}
+  </li>
+  {% endfor %}{% endif %}
+</ul>

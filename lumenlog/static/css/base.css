@@ -1,0 +1,21 @@
+main {
+    margin-top: 64px;
+}
+
+.page-item.active .page-link {
+    background: #636161 !important;
+    color: #ffffff !important;
+    border-color: #636161;
+}
+
+.page-link {
+    color: #000000 !important;
+}
+
+.profile {
+    max-height: 450px;
+}
+
+.img-thumbnail {
+    border-radius: 50%;
+}

@@ -1,0 +1,9 @@
+{% extends "views/base.html" %}{% block title %}Edit Profile{% endblock title %}
+{% block content %}
+<form method="POST">
+{{form.hidden_tag()}}
+{{form.username.label()}}{{form.username}}<br><br>
+{{form.about_me.label()}}{{form.about_me}}<br><br>
+{{form.submit}}
+</form>
+{% endblock content %}

@@ -1,5 +1,69 @@
-{% extends "views/base.html" %}{% block title %}Home{% endblock title %}
-{% block content %}
-<button class="bg-sky-700 px-4 py-2 text-white hover:bg-sky-800 sm:px-8 sm:py-3">...</button>
-
+{% extends "views/base.html" %}{% block title %}Home{% endblock title %} {%block
+content %} {% if form %}
+<div class="row mb-3">
+  <div class="col-7">
+    <form method="POST" novalidate>
+      {{ form.hidden_tag() }}
+      <div class="form-floating mb-2">
+        {{ form.content(class="form-control", placeholder="Say something",
+        id="floatingTextarea", style="height: 100px") }}
+        <label for="floatingTextarea">Say something</label>
+      </div>
+      <div>{{ form.submit(class="btn btn-outline-secondary") }}</div>
+    </form>
+  </div>
+  <div></div>
+</div>
+{% endif %}
+<div class="row">
+  {% include "views/_posts.html" %}
+  <nav aria-label="Page navigation bg-dark-subtle">
+    <ul class="pagination justify-content-center text-secondary">
+      {% if pagination.has_prev %}
+      <li class="page-item">
+        <a class="page-link text-secondary" href="{{ prev_url }}"
+          ><span aria-hidden="true">&laquo;</span></a
+        >
+      </li>
+      {% elif not pagination.has_prev %}
+      <li class="page-item disabled">
+        <a class="page-link text-secondary" href="{{ prev_url }}"
+          ><span aria-hidden="true">&laquo;</span></a
+        >
+      </li>
+      {% endif %} {% for page_num in pagination.iter_pages() %} {% if page_num
+      %} {% if page_num != pagination.page %}
+      <li class="page-item">
+        {% if form %}
+        <a class="page-link" href="{{ url_for('views.home', page=page_num) }}"
+          >{{ page_num }}</a
+        >
+        {% else %}
+        <a
+          class="page-link"
+          href="{{ url_for('views.explore', page=page_num) }}"
+          >{{ page_num }}</a
+        >
+        {% endif %}
+      </li>
+      {% else %}
+      <li class="page-item active">
+        <a class="page-link text-secondary" href="">{{ page_num }}</a>
+      </li>
+      {% endif %} {% endif %} {% endfor %} {% if pagination.has_next %}
+      <li class="page-item">
+        <a class="page-link text-secondary" href="{{ next_url }}"
+          ><span aria-hidden="true">&raquo;</span></a
+        >
+      </li>
+      {% elif not pagination.has_next %}
+      <li class="page-item disabled">
+        <a class="page-link text-secondary" href="{{ next_url }}"
+          ><span aria-hidden="true">&raquo;</span></a
+        >
+      </li>
+      {% endif %}
+    </ul>
+  </nav>
+</div>
 {% endblock content %}
