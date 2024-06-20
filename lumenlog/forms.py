@@ -4,10 +4,11 @@ import email_validator
 from .models import User
 from sqlalchemy import select
 from flask_wtf import FlaskForm
+from flask_wtf.file import FileField, FileRequired
 from wtforms import StringField, SubmitField, ValidationError, PasswordField, TextAreaField
 from wtforms.validators import DataRequired, Email, Length, EqualTo, Optional
+from wtforms.widgets import TextArea
 
-# class login form
 class LoginForm(FlaskForm):
     email = StringField('Email', validators=[DataRequired('Please provide a username.'), Email()])
     password = PasswordField('Password', validators=[DataRequired('Please enter your password.')])
@@ -18,7 +19,7 @@ class LoginForm(FlaskForm):
             return
         user = db.session.execute(select(User).filter_by(email=email.data)).scalar()
         if user is None:
-            raise ValidationError("Account does not exist.")        
+            raise ValidationError("Account does not exist.")   
 
 # class signup form    
 class SignUpForm(FlaskForm):
@@ -42,12 +43,25 @@ class SignUpForm(FlaskForm):
         if user is not None:
             raise ValidationError("Email address already in use.")
         
+class SearchForm(FlaskForm):
+    search = StringField('Search...', validators=[DataRequired()])
+    submit = SubmitField('Search')
         
 class PostForm(FlaskForm):
-    content = TextAreaField("Say something", validators=[DataRequired(), Length(min=1, max=120)])
+    title = StringField("Title", validators=[DataRequired(), Length(min=1, max=255)])
+    cover = FileField("Cover photo", validators=[FileRequired()])
+    content = StringField("Say something", validators=[DataRequired(), Length(min=1, max=4999)], widget=TextArea())
     submit = SubmitField("Post")
+    
+class DeletePost(FlaskForm):
+    submit = SubmitField('Delete')
     
 class EditProfileForm(FlaskForm):
     username = StringField("Username", validators=[DataRequired(), Length(min=3, max=15)])
     about_me = TextAreaField("About Me", validators=[Optional(), Length(min=0, max=70)])
+    profile_pic = FileField("Profile picture")
     submit = SubmitField("Done")
+    
+class Follow_Or_Unfollow(FlaskForm):
+    submit = SubmitField('Submit')
+    

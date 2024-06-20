@@ -1,3 +1,8 @@
+body {
+    background: #36353a;
+    color: white;
+}
+
 main {
     margin-top: 64px;
 }
@@ -14,8 +19,33 @@ main {
 
 .profile {
     max-height: 450px;
+    background: #212529;
+}
+
+.post {
+    background: #212529;
+    color: white;
+    border: none;
+}
+
+.edit-profile {
+    background: #212529;
+    color: white;
+    border: none;
+}
+
+.form-field,
+.form-field:focus {
+    background: #212529;
+    color: white;
 }
 
 .img-thumbnail {
+    border-width: 0 !important;
     border-radius: 50%;
+}
+
+.post-time {
+    font-size: 13px !important;
+    color: #918b8b;
 }

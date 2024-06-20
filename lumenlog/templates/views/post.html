@@ -1,0 +1,14 @@
+{% extends "views/base.html" %}{% block title %}{{post.title}}{% endblock title
+%} {% block content %}
+<div class="row d-grid pt-4 align-content-center">
+  <div class="row justify-content-center">
+    <img
+      class="rounded-1"
+      src="{{ url_for('static', filename='img/' + post.cover) }}"
+      style="width: 270px; height: 240px" />
+  </div>
+  <div class="row align-content-center mt-2">
+    <div>{{post.content}}</div>
+  </div>
+</div>
+{% endblock content %}

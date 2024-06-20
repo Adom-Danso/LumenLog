@@ -1,7 +1,11 @@
-{% extends "views/base.html" %}{% block title %}Home{% endblock title %} {%block
-content %}
+{% extends "views/base.html" %}{% block title %}Search{% endblock title %} {%
+block content %}
+<h2 class="p-2">Search results:</h2>
 <div class="d-grid p-4 gy-5">
-  <div class="row">{% include "views/_posts.html" %}</div>
+  {% if posts %}{% include "views/_posts.html" %}{% else %}
+  <p>Your search could not be found</p>
+  {% endif %}
+
   <nav aria-label="Page navigation bg-dark-subtle" class="row mt-5">
     <ul
       class="pagination justify-content-center text-secondary d-flex justify-content-between">

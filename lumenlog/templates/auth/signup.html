@@ -3,14 +3,14 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sign Up &middot; LumenLog</title>
+    <title>Sign Up | LumenLog</title>
     <link
       rel="stylesheet"
       href="{{ url_for('static', filename='css/signup.css')}}" />
   </head>
   <body class="align">
     <div class="iphone">
-      <header class="header">
+      <header class="header justify-content-center align-content-center">
         <h1>Sign Up</h1>
       </header>
 
@@ -23,7 +23,7 @@
             placeholder="tim@google.com")}} {% if form.email.errors %} {% for
             error in form.email.errors %}
             <div>
-              <span>{{ error }}</span>
+              <span class="reg-error-msg m-3">{{ error }}</span>
             </div>
             {% endfor %} {% endif %}
           </div>
@@ -34,7 +34,7 @@
             placeholder="Tim")}} {% if form.username.errors %} {% for
             error in form.username.errors %}
             <div>
-              <span>{{ error }}</span>
+              <span class="reg-error-msg m-3">{{ error }}</span>
             </div>
             {% endfor %} {% endif %}
           </div>
@@ -45,7 +45,7 @@
             placeholder="Enter your password" )}} {% if form.password.errors %}
             {% for error in form.password.errors %}
             <div>
-              <span>{{ error }}</span>
+              <span class="reg-error-msg m-3">{{ error }}</span>
             </div>
             {% endfor %} {% endif %}
           </div>
@@ -56,7 +56,7 @@
             placeholder="Confirm your password" )}} {% if form.password2.errors %}
             {% for error in form.password2.errors %}
             <div>
-              <span>{{ error }}</span>
+              <span class="reg-error-msg m-3">{{ error }}</span>
             </div>
             {% endfor %} {% endif %}
           </div>

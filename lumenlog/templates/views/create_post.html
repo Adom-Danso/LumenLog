@@ -1,0 +1,28 @@
+{% extends "views/base.html" %} {% block title %}Create Post{% endblock title %}
+{% block content %}
+<div class="d-grid p-5 m-5 shadow-lg rounded-3 edit-profile">
+  <form method="POST" enctype="multipart/form-data">
+    {{ form.hidden_tag() }}
+
+    <div class="mb-3">
+      <label for="title" class="form-label">Blog title</label>
+      {{ form.title(class="form-control form-field", id="floatingInput") }}
+    </div>
+
+    <div class="mb-3">
+      <label for="formFile" class="form-label">Choose a cover photo</label>
+      {{ form.cover(class="form-control form-field", id="formFile") }}
+    </div>
+
+    <div class="mb-3">
+      <label for="content" class="form-label">Blog content</label>
+      {{ form.content(class="form-control form-field", id="content",
+      style="height: 400px") }}
+    </div>
+
+    <div class="d-flex justify-content-center align-content-center">
+      {{ form.submit(class="btn btn-outline-secondary") }}
+    </div>
+  </form>
+</div>
+{% endblock content %}

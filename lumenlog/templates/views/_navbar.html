@@ -1,41 +1,106 @@
-<nav
-  class="navbar navbar-expand-md fixed-top bg-dark bg-body-tertiary"
-  data-bs-theme="dark">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">LumenLog</a>
-    <button
-      class="navbar-toggler"
-      type="button"
-      data-bs-toggle="collapse"
-      data-bs-target="#navbarToggler"
-      aria-controls="navbarToggler"
-      aria-expanded="false"
-      aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarToggler">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link" href="{{url_for('views.home')}}">Home</a>
+<div class="p-3 mb-3 border-bottom bg-dark fixed-top" data-bs-theme="dark">
+  <div class="container">
+    <div
+      class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+      <ul
+        class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+        <li>
+          <a
+            href="{{ url_for('views.home') }}"
+            class="nav-link px-2 link-body-emphasis"
+            >Home</a
+          >
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{{ url_for('views.explore') }}">Explore</a>
+        <li>
+          <a
+            href="{{ url_for('views.explore') }}"
+            class="nav-link px-2 link-body-emphasis"
+            >Explore</a
+          >
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{{ url_for('views.user', username=current_user.username) }}">Profile</a>
+        <li>
+          <a href="#" class="nav-link px-2 link-body-emphasis">Contact</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{{url_for('auth.logout')}}">Logout</a>
+        <li>
+          <a href="#" class="nav-link px-2 link-body-emphasis">Products</a>
         </li>
       </ul>
-      <form class="d-flex" role="search">
-        <input
-          class="form-control me-2"
-          type="search"
-          placeholder="Search"
-          aria-label="Search" />
-        <button class="btn btn-outline-success" type="submit">Search</button>
+
+      <form
+        class="d-flex"
+        role="search"
+        method="POST"
+        action="{{ url_for('views.search')}}">
+        {{ searchForm.hidden_tag() }}
+        <div class="input-group me-2">
+          <input
+            type="search"
+            name="search"
+            class="form-control rounded-start-5"
+            placeholder="Search..."
+            aria-label="Search" />
+          <button
+            class="btn btn-outline-secondary rounded-end-5 justify-content-center"
+            type="button"
+            id="button-addon2">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="18"
+              height="18"
+              fill="currentColor"
+              class="bi bi-search"
+              viewBox="0 0 18 19">
+              <path
+                d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
+            </svg>
+          </button>
+        </div>
       </form>
+
+      <div class="dropdown text-end">
+        <a
+          href="#"
+          class="d-block link-body-emphasis text-decoration-none dropdown-toggle"
+          data-bs-toggle="dropdown"
+          aria-expanded="false">
+          {% if not user.profile_pic %}
+          <img
+            src="{{user.avatar(32) }}"
+            alt="mdo"
+            width="32"
+            height="32"
+            class="rounded-circle" />
+          {% else %}
+          <img
+            src="{{ url_for('static', filename='img/' + user.profile_pic) }}"
+            alt="mdo"
+            width="32"
+            height="32"
+            class="rounded-circle" />
+          {% endif %}
+        </a>
+        <ul class="dropdown-menu text-small">
+          <li>
+            <a class="dropdown-item" href="{{url_for('views.create_post')}}"
+              >Create Post</a
+            >
+          </li>
+          <li>
+            <a
+              class="dropdown-item"
+              href="{{ url_for('views.user', username=current_user.username) }}"
+              >Profile</a
+            >
+          </li>
+          <li><a class="dropdown-item" href="#">Settings</a></li>
+          <li><hr class="dropdown-divider" /></li>
+          <li>
+            <a class="dropdown-item" href="{{url_for('auth.logout')}}"
+              >Sign out</a
+            >
+          </li>
+        </ul>
+      </div>
     </div>
   </div>
-</nav>
+</div>

@@ -114,7 +114,7 @@ p {
   gap: 3em;
 }
 
-.iphones > :first-child {
+.iphones> :first-child {
   margin-top: 5.5em;
 }
 
@@ -156,6 +156,10 @@ p {
   font-size: 0.875rem;
   margin-block-end: 0.5em;
   margin-inline: 0.5em;
+}
+
+.reg-error-msg {
+  color: rgb(173, 18, 18);
 }
 
 .text--center {

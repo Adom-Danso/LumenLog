@@ -27,5 +27,9 @@ manage.py
 migrate.py
 /instance/
 config.py
-i.html
 __pycache__
+babel.cfg
+translations
+messages.pot
+/migrations/
+img
