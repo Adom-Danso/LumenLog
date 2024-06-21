@@ -1,6 +1,6 @@
 {% extends "views/base.html" %} {% block title %}Create Post{% endblock title %}
 {% block content %}
-<div class="d-grid p-5 m-5 shadow-lg rounded-3 edit-profile">
+<div class="d-grid p-5 m-5 shadow-lg rounded-3 create-post">
   <form method="POST" enctype="multipart/form-data">
     {{ form.hidden_tag() }}
 
@@ -24,5 +24,7 @@
       {{ form.submit(class="btn btn-outline-secondary") }}
     </div>
   </form>
+  {{ ckeditor.load() }}
+  {{ ckeditor.config(name="content") }}
 </div>
 {% endblock content %}

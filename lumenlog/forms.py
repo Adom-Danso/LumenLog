@@ -8,6 +8,7 @@ from flask_wtf.file import FileField, FileRequired
 from wtforms import StringField, SubmitField, ValidationError, PasswordField, TextAreaField
 from wtforms.validators import DataRequired, Email, Length, EqualTo, Optional
 from wtforms.widgets import TextArea
+from flask_ckeditor import CKEditorField
 
 class LoginForm(FlaskForm):
     email = StringField('Email', validators=[DataRequired('Please provide a username.'), Email()])
@@ -50,15 +51,13 @@ class SearchForm(FlaskForm):
 class PostForm(FlaskForm):
     title = StringField("Title", validators=[DataRequired(), Length(min=1, max=255)])
     cover = FileField("Cover photo", validators=[FileRequired()])
-    content = StringField("Say something", validators=[DataRequired(), Length(min=1, max=4999)], widget=TextArea())
+    content = CKEditorField("Content", validators=[DataRequired(), Length(min=1, max=4999)])
     submit = SubmitField("Post")
     
-class DeletePost(FlaskForm):
-    submit = SubmitField('Delete')
-    
+
 class EditProfileForm(FlaskForm):
     username = StringField("Username", validators=[DataRequired(), Length(min=3, max=15)])
-    about_me = TextAreaField("About Me", validators=[Optional(), Length(min=0, max=70)])
+    about_me = StringField("About Me", validators=[Optional(), Length(min=0, max=70)])
     profile_pic = FileField("Profile picture")
     submit = SubmitField("Done")
     

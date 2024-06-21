@@ -72,7 +72,7 @@ def edit_profile(username):
                 f.save(os.path.join(app.config['IMAGE_FOLDER'], uuid_filename))
             db.session.commit()
             return redirect(url_for("views.user", username=username))
-        return render_template('views/edit_profile.html', form=form, username=username)
+        return render_template('views/edit_profile.html', form=form, username=username, user=current_user)
     return redirect(url_for('views.home'))
 
 @views.route('/follow/<username>', methods=['POST'])

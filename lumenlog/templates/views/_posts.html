@@ -36,7 +36,7 @@
           <div class="row px-4 mt-2">{{ post.title }}</div>
           <div class="row px-4 mt-2">
             <div class="text-truncate p-0 m-0" style="max-width: 400px">
-              {{ post.content }}
+              {{ post.content|safe }}
             </div>
           </div>
           <div class="align-bottom m-2">

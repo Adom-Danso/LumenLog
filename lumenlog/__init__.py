@@ -2,12 +2,13 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
 from flask_moment import Moment
-
+from flask_ckeditor import CKEditor
 
 
 db = SQLAlchemy()
 login_manager = LoginManager()
 moment = Moment()
+ckeditor = CKEditor()
 
 def create_app():
     app = Flask(__name__, instance_relative_config=True)
@@ -17,6 +18,7 @@ def create_app():
     db.init_app(app)
     login_manager.init_app(app)
     moment.init_app(app)
+    ckeditor.init_app(app)
     
     login_manager.login_view = "auth.login"
     
