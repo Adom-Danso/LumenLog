@@ -1,6 +1,6 @@
 from flask import Blueprint, current_app as app, render_template, redirect, url_for, request, abort, flash
 from flask_login import login_required, current_user
-from .forms import PostForm, EditProfileForm, Follow_Or_Unfollow, SearchForm, DeletePost
+from .forms import PostForm, EditProfileForm, Follow_Or_Unfollow, SearchForm
 from .models import Post, User
 from . import db
 from sqlalchemy import select
@@ -16,8 +16,7 @@ views = Blueprint("views", __name__)
 def base():
     searchForm = SearchForm()
     user = current_user
-    delete_post_form = DeletePost()
-    return dict(searchForm=searchForm, user=user, delete_post_form=delete_post_form)
+    return dict(searchForm=searchForm, user=user)
 
 @views.route('/')
 @login_required

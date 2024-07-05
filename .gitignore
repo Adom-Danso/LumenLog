@@ -24,12 +24,9 @@ Thumbs.db
 ##############
 /test/
 manage.py
-migrate.py
 /instance/
-config.py
 __pycache__
 babel.cfg
 translations
 messages.pot
 /migrations/
-img
