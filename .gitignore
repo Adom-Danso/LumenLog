@@ -2,7 +2,6 @@
 *.pyc
 
 # Ignore database files
-*.db
 
 # Ignore virtual environment directories
 /virt/
@@ -24,7 +23,6 @@ Thumbs.db
 ##############
 /test/
 manage.py
-/instance/
 __pycache__
 babel.cfg
 translations

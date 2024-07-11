@@ -1,14 +1,20 @@
-{% extends "views/base.html" %}{% block title %}{{post.title}}{% endblock title
-%} {% block content %}
-<div class="row d-grid pt-4 align-content-center">
-  <div class="row justify-content-center">
-    <img
-      class="rounded-1"
-      src="{{ url_for('static', filename='img/' + post.cover) }}"
-      style="width: 270px; height: 240px" />
-  </div>
-  <div class="row align-content-center mt-2">
-    <div>{{post.content|safe}}</div>
-  </div>
+{% extends "views/base.html" %}
+{% block title %}{{ post.title }}{% endblock title %}
+{% block content %}
+<div class="container pt-4 custom-container">
+    <div class="row justify-content-center custom-image-row">
+        <img
+            class="rounded-1 custom-image"
+            src="{{ url_for('static', filename='img/' + post.cover) }}"
+            alt="{{ post.title }}"
+        />
+    </div>
+    <div class="row mt-3 justify-content-center custom-content-row">
+        <div class="col-md-8 custom-content shadow-lg">
+            <div>{{ post.title }}</div>
+            <hr>
+            <div>{{ post.content|safe }}</div>
+        </div>
+    </div>
 </div>
 {% endblock content %}

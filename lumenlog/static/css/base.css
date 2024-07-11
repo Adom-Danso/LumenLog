@@ -1,21 +1,12 @@
-body {
-    background: #36353a;
-    color: white;
-}
-
 main {
     margin-top: 64px;
 }
 
 .page-item.active .page-link {
-    background: #636161 !important;
     color: #ffffff !important;
     border-color: #636161;
 }
 
-.page-link {
-    color: #000000 !important;
-}
 
 .profile {
     max-height: 450px;
@@ -24,7 +15,6 @@ main {
 
 .post {
     background: #212529;
-    color: white;
     border: none;
 }
 
@@ -57,37 +47,63 @@ main {
     color: #918b8b;
 }
 
-
-.upload{
-  width: 100px;
-  position: relative;
-  margin: auto;
+.upload {
+    width: 100px;
+    position: relative;
+    margin: auto;
 }
 
-.upload img{
-  border-radius: 50%;
-  border: 6px solid #eaeaea;
+.upload img {
+    border-radius: 50%;
+    border: 6px solid #eaeaea;
 }
 
-.upload .round{
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  background: #00B4FF;
-  width: 32px;
-  height: 32px;
-  line-height: 33px;
-  text-align: center;
-  border-radius: 50%;
-  overflow: hidden;
+.upload .round {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background: #00B4FF;
+    width: 32px;
+    height: 32px;
+    line-height: 33px;
+    text-align: center;
+    border-radius: 50%;
+    overflow: hidden;
 }
 
-.upload .round input[type = "file"]{
-  position: absolute;
-  transform: scale(2);
-  opacity: 0;
+.upload .round input[type="file"] {
+    position: absolute;
+    transform: scale(2);
+    opacity: 0;
 }
 
-input[type=file]::-webkit-file-upload-button{
+input[type=file]::-webkit-file-upload-button {
     cursor: pointer;
+}
+
+/* Custom image row class */
+.custom-image-row {
+    text-align: center;
+}
+
+/* Custom image class */
+.custom-image {
+    max-width: 100%;
+    height: 35vh;
+    margin-bottom: 15px;
+}
+
+/* Custom content row class */
+.custom-content-row {
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* Custom content class */
+.custom-content {
+    padding: 10px;
+    background-color: #212020; /* Matching the existing dark background */
+    color: white; /* Ensuring text color is white */
+    border-radius: 5px;
+    box-shadow: 10 10px 10px rgba(0, 0, 0, 0.5); /* Slightly darker shadow for better contrast */
 }
